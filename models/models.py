@@ -12,6 +12,7 @@ class Plant(Model):
         plant_dict = super().get_by_id(id)
         cls.print_object([plant_dict])
         get_employees_by_plant = Employee.get_data()
+        print('The following workers work at this plant: ')
         for gebp in get_employees_by_plant:
             for el in gebp:
                 if gebp['type_of_work'] == 'plant' and gebp['object_id'] == str(plant_dict['id']):
@@ -65,12 +66,52 @@ class Salon(Model):
         salon_dict = super().get_by_id(id)
         cls.print_object([salon_dict])
         get_employees_by_salon = Employee.get_data()
+        print('The following workers work at this salon: ')
         for gebp in get_employees_by_salon:
             for el in gebp:
                 if gebp['type_of_work'] == 'salon' and gebp['object_id'] == str(salon_dict['id']):
                     print(gebp['name'])
                     break
-
+#<----------------------------------------------------------->
+    # @classmethod
+    # def get_data(cls):
+    #     file = open('database/' + cls.file, 'r')
+    #     data_in_json = file.read()
+    #     data = json.loads(data_in_json)
+    #     file.close()
+    #     return data
+    #
+    # @classmethod
+    # def get_all_employees(cls):
+    #     data = cls.get_data()
+    #     for employee in data:
+    #         print(employee['name'])
+    #         print(employee['plant_id'])
+    #
+    # @classmethod
+    # def get_by_id(cls, id):
+    #     data = cls.get_data()
+    #     count = 0
+    #     for employee in data:
+    #         if id == employee['id']:
+    #             print(employee['name'])
+    #             print(employee['plant_id'])
+    #             break
+    #         count += 1
+    #         if count == len(data):
+    #             print('Not found employee with this Id')
+    #
+    # def save(self):
+    #     data = self.get_data()
+    #     new_employee = {'name': self.name, 'plant_id': self.plant_id}
+    #     if len(data) > 0:
+    #         new_employee['id'] = data[-1]['id'] + 1
+    #     else:
+    #         new_employee['id'] = 1
+    #     data.append(new_employee)
+    #     file = open('database/' + self.file, 'w')
+    #     data_in_json = json.dumps(data)
+    #     file.write(data_in_json)
 
 
 

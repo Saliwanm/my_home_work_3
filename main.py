@@ -9,7 +9,9 @@ while True:
           "6. Get Employee by Id\n" +
           "7. Add new Salon\n" +
           "8. Get all salons\n" +
-          "9. Get Salon by Id\n"
+          "9. Get Salon by Id\n" +
+          "10. Get all employees which work in all plants\n" +
+          "11. Get all employees which work in all salons\n"
           )
     flag = int(input('Choose menu item: '))
     if flag == 1:
@@ -44,3 +46,9 @@ while True:
     elif flag == 9:
         id = int(input("Type Id to search: "))
         Salon.get_by_id(id)
+    elif flag == 10:
+        temp = 'plant'
+        Employee.get_all_employee_ps(temp)
+    elif flag == 11:
+        temp = 'salon'
+        Employee.get_all_employee_ps(temp)

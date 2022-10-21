@@ -14,10 +14,9 @@ class Plant(Model):
         get_employees_by_plant = Employee.get_data()
         print('The following workers work at this plant: ')
         for gebp in get_employees_by_plant:
-            for el in gebp:
-                if gebp['type_of_work'] == 'plant' and gebp['object_id'] == str(plant_dict['id']):
-                    print(gebp['name'])
-                    break
+            if gebp['type_of_work'] == 'plant' and gebp['object_id'] == str(plant_dict['id']):
+                print(gebp['name'])
+                break
 
     def _protected_example(self):
         return 'protected'
@@ -50,8 +49,26 @@ class Employee(Model):
         employee = Employee(employee_dict['name'], int(employee_dict['object_id']), employee_dict['type_of_work'])
         work_of_employee = employee.get_work()
         cls.print_object([employee_dict])
+        # try:
+        #     cls.print_object([employee_dict])
+        # except:
+        #     print('Ops, thomething is wrong...')
         print('Employee work: ')
         cls.print_object([work_of_employee])
+
+    # @classmethod
+    # def get_all_employee_ps(cls, temp):
+    #     data = cls.get_data()
+    #     if len(data) > 0:
+    #         flag = 0
+    #         for el in data:
+    #             if el['type_of_work'] == temp:
+    #                 flag += 1
+    #                 print(el['name'])
+    #         if flag == 0:
+    #             print('Nobody work in ' + temp)
+    #     else:
+    #         print('Sorry, but we do not have employees :(')
 
 class Salon(Model):
     file = 'salon.json'
@@ -67,11 +84,10 @@ class Salon(Model):
         cls.print_object([salon_dict])
         get_employees_by_salon = Employee.get_data()
         print('The following workers work at this salon: ')
-        for gebp in get_employees_by_salon:
-            for el in gebp:
-                if gebp['type_of_work'] == 'salon' and gebp['object_id'] == str(salon_dict['id']):
-                    print(gebp['name'])
-                    break
+        for gebs in get_employees_by_salon:
+            if gebs['type_of_work'] == 'salon' and gebs['object_id'] == str(salon_dict['id']):
+                print(gebs['name'])
+                break
 #<----------------------------------------------------------->
     # @classmethod
     # def get_data(cls):

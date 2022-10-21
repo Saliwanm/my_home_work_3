@@ -31,6 +31,20 @@ class Model(ABC):
                     print(el[field])
 
     @classmethod
+    def get_all_employee_ps(cls, temp):
+        data = cls.get_data()
+        if len(data) > 0:
+            flag = 0
+            for el in data:
+                if el['type_of_work'] == temp:
+                    flag += 1
+                    print(el['name'])
+            if flag == 0:
+                print('Nobody work in ' + temp)
+        else:
+            print('Sorry, but we do not have employees :(')
+
+    @classmethod
     def print_object(cls, objects: list):
         if len(objects) > 0:
             fields = objects[0].keys()
